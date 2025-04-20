@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roque Nicolás Carballo - Desarrollo Web de Vanguardia</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles (Copied from your original code) -->
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6f42c1;
+            --accent-color: #17a2b8;
+            --primary-glow: rgba(13, 110, 253, 0.3);
+            --accent-glow: rgba(23, 162, 184, 0.4);
+            --bg-light-shade: #fcfdff;
+            --text-dark: #212529;
+            --text-muted-light: #6c757d;
+        }
+
+        body {
+            padding-top: 70px;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-light-shade);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--accent-color), #23a6d5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+
+            /* ... gradient animation ... */
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero-section .display-2 {
+            font-weight: 800;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+            font-size: 3rem;
+        }
+
+        .hero-section .lead {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            opacity: 0.15;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-10deg);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+            border: none;
+            margin: 0.5rem;
+        }
+
+        .hero-section .btn-light {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+        }
+
+        .hero-section .btn-outline-light {
+            border-width: 2px;
+            background-color: transparent;
+        }
+
+        .hero-section .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            /* ... pulse animation ... */
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* --- Secciones Generales --- */
+        .section-separator {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+            font-weight: 800;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        /* --- Tarjetas Proyecto --- */
+        .project-card {
+            border: none;
+            border-radius: 1rem;
+            background-color: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 15px 40px var(--accent-glow);
+        }
+
+        .project-card .card-img-top {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            background-color: #eee;
+        }
+
+        .project-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .project-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .project-card .card-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
+        }
+
+        .project-card .card-text {
+            font-size: 0.875rem;
+        }
+
+        .project-card .btn {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .project-card .btn i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .project-card .btn:hover {
+            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .project-card .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* --- Modales --- */
+        .modal-content {
+            border-radius: 1rem;
+            border: none;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 1.5rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-body h6 {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+        }
+
+        .modal-body p,
+        .modal-body .small {
+            font-size: 0.9rem;
+        }
+
+        .modal-body .badge {
+            padding: 0.5em 0.8em;
+            font-size: 0.85em;
+            margin: 3px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .modal-carousel img {
+            background-color: #f8f9fa;
+            object-fit: contain;
+            aspect-ratio: 16 / 9;
+            /* Ensure consistent aspect ratio */
+        }
+
+        /* --- Fondos y Sobre Mí --- */
+        .section-bg-gradient {
+            background: linear-gradient(180deg, var(--bg-light-shade) 0%, #eaf6f6 100%);
+            border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        #about {
+            background-color: white;
+        }
+
+        .about-img {
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 35px var(--primary-glow);
+            max-width: 280px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .about-text .lead {
+            color: var(--text-muted-light);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .about-text p {
+            font-size: 0.95rem;
+        }
+
+        .about-text strong {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .about-text .badge {
+            padding: 0.6em 1em;
+            font-size: 0.9em;
+            margin: 4px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .about-text .badge:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Contacto --- */
+        .contact-section {
+            background-color: #ffffff;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .contact-form-column {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-info-column {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-info-column h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .form-control:focus,
+        .form-floating>.form-control:focus~label {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem var(--accent-glow);
+        }
+
+        .form-floating>label {
+            color: var(--text-muted-light);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            font-size: 0.9rem;
+        }
+
+        .contact-icon-link {
+            display: block;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--bg-light-shade), #e9ecef);
+            color: var(--text-dark);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-size: 0.95rem;
+        }
+
+        .contact-icon-link:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .contact-icon-link i {
+            font-size: 1.6rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-icon-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: #adb5bd;
+            padding: 3rem 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        footer .social-icons a {
+            color: #adb5bd;
+            font-size: 1.4rem;
+            margin: 0 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+
+        footer p,
+        footer small {
+            font-size: 0.85rem;
+        }
+
+        footer .fas.fa-heart {
+            color: #e74c3c;
+        }
+
+        /* --- Media Queries --- */
+        @media (min-width: 992px) {
+
+            /* Desktop */
+            .hero-section .display-2 {
+                font-size: 4.5rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1.4rem;
+                max-width: 700px;
+            }
+
+            .section-separator {
+                padding: 6rem 0;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 4rem;
+            }
+
+            .modal-body {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Tablet/Mobile */
+            body {
+                padding-top: 65px;
+            }
+
+            .hero-section {
+                padding: 4rem 0;
+            }
+
+            .hero-section .display-2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1.1rem;
+            }
+
+            .hero-icon {
+                font-size: 4rem;
+            }
+
+            .hero-section .btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-separator {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .section-title::after {
+                width: 50px;
+                height: 3px;
+                bottom: -8px;
+            }
+
+            .project-card .card-body {
+                padding: 1.2rem;
+            }
+
+            .project-card .card-title {
+                font-size: 1.1rem;
+            }
+
+            .about-img {
+                max-width: 200px;
+                border-width: 4px;
+            }
+
+            .about-text .lead {
+                font-size: 1rem;
+            }
+
+            .contact-form-column,
+            .contact-info-column {
+                padding: 1.5rem;
+            }
+
+            .contact-info-column h4 {
+                font-size: 1.3rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.25rem;
+            }
+
+            .modal-body h6 {
+                font-size: 0.95rem;
+            }
+
+            .modal-body p,
+            .modal-body .small {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Small Mobile */
+            .hero-section .btn {
+                display: block;
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-section .btn:first-of-type {
+                margin-bottom: 1rem;
+            }
+
+            footer {
+                padding: 2rem 0;
+            }
+
+            footer .social-icons a {
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <!-- USER ACTION: Make sure logo path is correct -->
+            <a class="navbar-brand" href="#">
+                <img src="imagenes/logo2.png" style="max-width: 100px; height: auto;" alt="Logo RNC">
+                <!-- Adjusted size -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-1"><a class="nav-link active" aria-current="page" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="#projects">Proyectos</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="#about">Sobre Mí</a></li>
+                    <li class="nav-item mx-1"><a class="nav-link" href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <i class="fas fa-code hero-icon"></i>
+        <div class="container hero-content">
+            <h1 class="display-2 mb-3" data-aos="fade-down" data-aos-delay="100">Roque Nicolás Carballo</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="300">Desarrollador Web Experto | Creando
+                Experiencias Digitales Excepcionales y de Alto Impacto.</p>
+            <div data-aos="fade-up" data-aos-delay="500">
+                <a href="#projects" class="btn btn-light btn-lg shadow-sm btn-pulse">Ver Mi Trabajo <i
+                        class="fas fa-chevron-down ms-2"></i></a>
+                <a href="#contact" class="btn btn-outline-light btn-lg shadow-sm">¡Contacta Ahora! <i
+                        class="fas fa-rocket ms-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-separator section-bg-gradient">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Portfolio de Proyectos</h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 g-lg-5">
+
+                <!-- Proyecto 1 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 project-card">
+                        <!-- USER ACTION: Replace with your actual project image -->
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="card-img-top" alt="Dashboard Interactivo">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Dashboard Interactivo</h5>
+                            <p class="card-text text-muted flex-grow-1">Visualización de datos completa y análisis en
+                                tiempo real para toma de decisiones.</p>
+                            <button class="btn mt-auto align-self-start" data-bs-toggle="modal"
+                                data-bs-target="#projectModal1">
+                                Explorar <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 project-card">
+                        <!-- USER ACTION: Replace with your actual project image -->
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="card-img-top" alt="Plataforma E-Learning">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Plataforma E-Learning</h5>
+                            <p class="card-text text-muted flex-grow-1">Solución completa para cursos online con gestión
+                                de usuarios y progreso.</p>
+                            <button class="btn mt-auto align-self-start" data-bs-toggle="modal"
+                                data-bs-target="#projectModal2">
+                                Explorar <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 project-card">
+                        <!-- USER ACTION: Replace with your actual project image -->
+                        <img src="https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="card-img-top" alt="Landing Page Moderna">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Landing Page Moderna</h5>
+                            <p class="card-text text-muted flex-grow-1">Diseño atractivo y optimizado para conversión,
+                                con animaciones sutiles.</p>
+                            <button class="btn mt-auto align-self-start" data-bs-toggle="modal"
+                                data-bs-target="#projectModal3">
+                                Explorar <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Proyecto 1 -->
+    <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModal1Label">Dashboard Interactivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div id="carouselProject1" class="carousel slide shadow-sm border" data-bs-ride="carousel"
+                                style="border-radius: 12px; overflow: hidden;">
+                                <div class="carousel-inner modal-carousel">
+                                    <!-- USER ACTION: Replace with your actual project screenshots -->
+                                    <div class="carousel-item active">
+                                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                                            class="d-block w-100" alt="Vista Dashboard 1">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://via.placeholder.com/1170x780/cccccc/969696?text=Project+1+Screenshot+2"
+                                            class="d-block w-100" alt="Vista Dashboard 2">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://via.placeholder.com/1170x780/cccccc/969696?text=Project+1+Screenshot+3"
+                                            class="d-block w-100" alt="Vista Dashboard 3">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProject1"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProject1"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <h6><i class="fas fa-info-circle me-2"></i>Descripción del Proyecto</h6>
+                            <p class="text-muted small" style="text-align: justify;">
+                                Desarrollo de un dashboard a medida para visualizar métricas clave y el estado general
+                                del negocio.
+                                Incluye funcionalidades como registro dinámico en agenda, gráficos interactivos
+                                (implementados con Chart.js),
+                                opción de exportación de datos relevantes, un calendario de pagos integrado, y una
+                                página comercial para promoción.
+                                Se implementaron controles para evitar la superposición de horarios y cálculo automático
+                                del monto para clases individuales.
+                                Optimizado para un rendimiento eficiente incluso con grandes volúmenes de información.
+                            </p>
+                            <h6><i class="fas fa-cogs me-2"></i>Tecnologías Empleadas</h6>
+                            <p>
+                                <span class="badge text-bg-primary">ASP.NET Razor Pages</span>
+                                <span class="badge text-bg-secondary">SQL Server</span>
+                                <span class="badge"
+                                    style="background-color: var(--secondary-color); color: white;">C#</span>
+                                <span class="badge text-bg-warning text-dark">JavaScript (ES6+)</span>
+                                <span class="badge text-bg-info">Bootstrap 5</span>
+                                <span class="badge text-bg-success">Chart.js</span>
+                                <span class="badge text-bg-light text-dark border">Git & GitHub</span>
+                            </p>
+                            <h6><i class="fas fa-link me-2"></i>Enlaces Relevantes</h6>
+                            <p>
+                                <!-- Button trigger iframe modal -->
+                                <button type="button" class="btn btn-sm btn-success me-2 mb-2 shadow-sm"
+                                    data-bs-toggle="modal" data-bs-target="#iframeModalProject1">
+                                    <i class="fas fa-external-link-alt me-1"></i> Demo en Vivo
+                                </button>
+                                <!-- USER ACTION: Add GitHub link if public -->
+                                <!--
+                                <a href="YOUR_GITHUB_REPO_LINK_P1" target="_blank" class="btn btn-sm btn-dark mb-2 shadow-sm">
+                                    <i class="fab fa-github me-1"></i> Ver Código
+                                </a>
+                                -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Iframe Modal for Project 1 -->
+    <div class="modal fade" id="iframeModalProject1" tabindex="-1" aria-labelledby="iframeModalProject1Label"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-lg-down"> <!-- Fullscreen below lg -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="iframeModalProject1Label">Demo: Dashboard Interactivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-0" style="height: 85vh;"> <!-- Adjusted height -->
+                    <!-- USER ACTION: Replace with your actual Demo URL -->
+                    <iframe src="https://rncar0408.github.io/AylenMartinez/dashboard.html" frameborder="0"
+                        style="width:100%; height:100%; border:0;" allowfullscreen
+                        title="Demo Dashboard Interactivo"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Proyecto 2 Placeholder (will be filled by JS) -->
+    <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+        <!-- Content injected by JavaScript -->
+    </div>
+
+    <!-- Modal Proyecto 3 Placeholder (will be filled by JS) -->
+    <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+        <!-- Content injected by JavaScript -->
+    </div>
+
+    <section id="about" class="section-separator">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Conóceme Mejor</h2>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center" data-aos="fade-right" data-aos-delay="100">
+                    <!-- USER ACTION: Replace with your professional photo -->
+                    <img src="imagenes/nico.jpg" class="img-fluid about-img" alt="Foto de Nicolás Carballo">
+                </div>
+                <div class="col-lg-7 about-text" data-aos="fade-left" data-aos-delay="200">
+                    <h3 class="mb-3" style="color: var(--primary-color);">¡Hola! Soy Nicolás Carballo</h3>
+                    <p class="lead mb-4">Desarrollador Web Full-Stack, apasionado por la tecnología y dedicado a crear
+                        soluciones digitales robustas, escalables y centradas en el usuario.</p>
+                    <p>
+                        Mi experiencia abarca desde el diseño eficiente de bases de datos relacionales con <strong>SQL
+                            Server</strong> y la implementación de
+                        lógica de negocio sólida en <strong>C# / .NET Framework y .NET Core</strong>, hasta la creación
+                        de interfaces de usuario interactivas y responsivas
+                        utilizando <strong>HTML5, CSS3 (incluyendo preprocesadores como Sass), JavaScript moderno
+                            (ES6+)</strong> y frameworks como <strong>Bootstrap</strong>.
+                        Disfruto el desafío de transformar ideas complejas en aplicaciones web funcionales, elegantes y
+                        de alto rendimiento.
+                    </p>
+                    <h5 class="mt-4 mb-3 fw-bold">Mi Stack Tecnológico Principal:</h5>
+                    <div class="d-flex flex-wrap gap-2 justify-content-start">
+                        <span class="badge" style="background-color: #6f42c1; color: white;"><i
+                                class="fa-brands fa-c-sharp me-1"></i> C# & .NET</span>
+                        <span class="badge text-bg-primary"><i class="fas fa-database me-1"></i> SQL Server</span>
+                        <span class="badge text-bg-danger"><i class="fab fa-html5 me-1"></i> HTML5</span>
+                        <span class="badge text-bg-info"><i class="fab fa-css3-alt me-1"></i> CSS3/Sass</span>
+                        <span class="badge text-bg-warning text-dark"><i class="fab fa-js me-1"></i> JavaScript
+                            (ES6+)</span>
+                        <span class="badge" style="background-color: var(--accent-color); color: white;"><i
+                                class="fab fa-bootstrap me-1"></i> Bootstrap 5</span>
+                        <span class="badge text-bg-dark"><i class="fab fa-git-alt me-1"></i> Git/GitHub</span>
+                        <span class="badge text-bg-success"><i class="fas fa-server me-1"></i> APIs RESTful</span>
+                        <!-- Add more relevant skills -->
+                        <span class="badge" style="background-color: #F7DF1E; color: #000;"><i
+                                class="fab fa-react me-1"></i> React (Aprendiendo)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-separator contact-section section-bg-gradient">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Hablemos de Tu Proyecto</h2>
+            <p class="text-center text-muted lead mb-5" data-aos="fade-up" data-aos-delay="100">Estoy listo para
+                ayudarte a llevar tu idea al siguiente nivel. ¡Contáctame!</p>
+            <div class="row g-4 g-lg-5 align-items-stretch">
+                <!-- Columna del Formulario -->
+                <div class="col-lg-6 d-flex" data-aos="fade-right" data-aos-delay="200">
+                    <div class="contact-form-column w-100">
+                        <h4 class="mb-4 fw-bold text-center">Formulario de Contacto Rápido</h4>
+                        <!-- Added novalidate to prevent default browser validation, handled by JS -->
+                        <form id="contactForm" novalidate>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="name" placeholder="Tu Nombre" required>
+                                <label for="name">Nombre Completo <span class="text-danger">*</span></label>
+                                <div class="invalid-feedback">Por favor, dime tu nombre.</div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+                                <label for="email">Tu Mejor Email <span class="text-danger">*</span></label>
+                                <div class="invalid-feedback">Necesito un email válido para responderte.</div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control" id="message" placeholder="Cuéntame sobre tu idea"
+                                    style="height: 120px" required></textarea>
+                                <label for="message">Tu Mensaje / Consulta <span class="text-danger">*</span></label>
+                                <div class="invalid-feedback">¡Cuéntame en qué puedo ayudarte!</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 py-2 fw-bold shadow">
+                                Enviar Ahora <i class="fas fa-paper-plane ms-2"></i>
+                            </button>
+                        </form>
+                        <!-- Hidden success message div (can be used as fallback or removed if only using Swal) -->
+                        <div id="successMessage" style="display:none;"
+                            class="alert alert-success mt-3 text-center fw-bold">
+                            ¡Mensaje enviado con éxito! Me pondré en contacto pronto.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna de Información de Contacto -->
+                <div class="col-lg-6 d-flex" data-aos="fade-left" data-aos-delay="300">
+                    <div class="contact-info-column w-100">
+                        <h4 class="mb-4 fw-bold text-center">Contacto Directo y Redes</h4>
+                        <div class="d-flex flex-column gap-3">
+                            <!-- USER ACTION: Replace with your actual WhatsApp number -->
+                            <a href="https://wa.me/+5493512516358" target="_blank" class="contact-icon-link">
+                                <i class="fab fa-whatsapp" style="color: #25D366;"></i> <span class="ms-2">Chatea por
+                                    WhatsApp</span>
+                            </a>
+                            <!-- USER ACTION: Replace with your actual Email -->
+                            <a href="mailto:roque.n.carballo@email.com" class="contact-icon-link">
+                                <i class="fas fa-envelope" style="color: #DB4437;"></i> <span class="ms-2">Envíame un
+                                    Email</span>
+                            </a>
+                            <!-- USER ACTION: Replace with your actual LinkedIn Profile URL -->
+                            <a href="https://www.linkedin.com/in/nicolas-carballo-7a64358a/" target="_blank"
+                                class="contact-icon-link">
+                                <i class="fab fa-linkedin" style="color: #0A66C2;"></i> <span class="ms-2">Perfil de
+                                    LinkedIn</span>
+                            </a>
+                            <!-- USER ACTION: Replace with your actual GitHub Profile URL -->
+                            <a href="https://github.com/rncar0408" target="_blank" class="contact-icon-link">
+                                <i class="fab fa-github" style="color: #333;"></i> <span class="ms-2">Proyectos en
+                                    GitHub</span>
+                            </a>
+                            <!-- USER ACTION: Replace with your actual Instagram Profile URL -->
+                            <a href="https://www.instagram.com/rncarballo.code/" target="_blank"
+                                class="contact-icon-link">
+                                <i class="fab fa-instagram" style="color: #C13584;"></i> <span
+                                    class="ms-2">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 py-md-5 mt-5 text-center">
+        <div class="container">
+            <div class="social-icons mb-3">
+                <!-- USER ACTION: Add your actual URLs -->
+                <a href="https://www.linkedin.com/in/nicolas-carballo-7a64358a/" target="_blank" title="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rncar0408" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/+5493512516358" target="_blank" title="WhatsApp"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="mailto:roque.n.carballo@email.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.instagram.com/rncarballo.code/" target="_blank" title="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="mb-1">© <span id="currentYear"></span> Roque Nicolás Carballo - Hecho con <i
+                    class="fas fa-heart"></i> y <i class="fas fa-code"></i>.</p>
+            <small class="text-white-50 d-block">Innovando en la web. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Core Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+        // --- Initialize EmailJS ---
+        (function () {
+            // USER ACTION: Replace with your actual EmailJS Public Key
+            emailjs.init("gBSs7jOvW6-7JWxzs");
+        })();
+
+        // --- Contact Form Handling ---
+        const contactForm = document.getElementById("contactForm");
+        const successMessageDiv = document.getElementById("successMessage"); // Optional success message div
+
+        if (contactForm) {
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent default form submission
+                const form = this;
+
+                // Use Bootstrap's built-in validation check
+                if (!form.checkValidity()) {
+                    e.stopPropagation(); // Stop further event propagation if invalid
+                    form.classList.add('was-validated'); // Show validation feedback
+                    return; // Exit if form is invalid
+                }
+
+                // --- Visual Feedback: Disable button and show spinner ---
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.disabled = true;
+                submitButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...`;
+
+                // --- Get Form Data ---
+                const name = document.getElementById("name").value;
+                const correo = document.getElementById("email").value;
+                const consulta = document.getElementById("message").value;
+
+                // --- Prepare EmailJS Parameters ---
+                // Make sure these keys (e.g., 'name', 'correo', 'consulta') EXACTLY match
+                // the variables you used in your EmailJS template (e.g., {{name}}, {{correo}})
+                const templateParams = {
+                    name: name,
+                    correo: correo,
+                    consulta: consulta,
+                    // --- Optional: Logo Handling ---
+                    // If your EmailJS template uses a logo variable like {{logo_url}},
+                    // provide the FULL PUBLIC URL here. Otherwise, remove or comment out this line.
+                    // logo_url: 'https://your-domain.com/path/to/your/public/logo.png'
+                };
+
+                // USER ACTION: Replace with your actual EmailJS Service ID and Template ID
+                const serviceID = "service_khzlxxq";
+                const templateID = "template_slqcgh8";
+
+                // --- Send Email using EmailJS ---
+                emailjs.send(serviceID, templateID, templateParams)
+                    .then(function (response) {
+                        console.log('EMAILJS SUCCESS!', response.status, response.text);
+
+                        // Show success message using SweetAlert2
+                        Swal.fire({
+                            title: `¡Gracias, ${name.split(' ')[0]}!`, // Use first name
+                            text: 'He recibido tu mensaje. Me pondré en contacto contigo muy pronto.',
+                            icon: 'success',
+                            confirmButtonText: '¡Estupendo!',
+                            confirmButtonColor: 'var(--primary-color)', // Use theme color
+                            customClass: { confirmButton: 'shadow-sm' }
+                        });
+
+                        form.reset(); // Clear the form fields
+                        form.classList.remove('was-validated'); // Reset validation state
+                        if (successMessageDiv) successMessageDiv.style.display = 'none'; // Hide basic message div
+
+                    }, function (error) {
+                        console.error('EMAILJS FAILED...', error);
+
+                        // Show error message using SweetAlert2
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops... Algo salió mal',
+                            text: `No se pudo enviar tu mensaje. Error: ${error.text || 'Desconocido'}. Por favor, intenta de nuevo o usa otro método de contacto.`,
+                            confirmButtonColor: '#dc3545' // Bootstrap danger color
+                        });
+
+                    })
+                    .finally(() => {
+                        // --- Restore Button State ---
+                        // This runs regardless of success or failure
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    });
+            });
+        } else {
+            console.error("Contact form with ID 'contactForm' not found.");
+        }
+
+        // --- Initialize AOS ---
+        AOS.init({
+            duration: 700,
+            once: true // Animation happens only once
+        });
+
+        // --- Dynamic Year in Footer ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Bootstrap Validation Initialization (Optional Enhancement) ---
+        // While the submit handler checks validity, this ensures Bootstrap's
+        // visual feedback works even before submission if desired (e.g., on blur).
+        // If you only want validation on submit, this block can be removed.
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                // Add event listeners for input/change if you want real-time feedback
+                // Example: form.querySelectorAll('input, textarea, select').forEach(input => {
+                //     input.addEventListener('blur', () => { form.classList.add('was-validated'); });
+                // });
+            })
+        })()
+
+        // --- Populate Modals 2 & 3 ---
+        // USER ACTION: Fill these with YOUR actual project details, images, links, etc.
+        const modal2HTML = `
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModal2Label">Plataforma E-Learning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div id="carouselProject2" class="carousel slide shadow-sm border" data-bs-ride="carousel" style="border-radius: 12px; overflow: hidden;">
+                                <div class="carousel-inner modal-carousel">
+                                    <div class="carousel-item active"><img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="d-block w-100" alt="Vista Plataforma E-Learning 1"></div>
+                                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" class="d-block w-100" alt="Vista Plataforma E-Learning 2"></div>
+                                    <div class="carousel-item"><img src="https://via.placeholder.com/1170x780/cccccc/969696?text=Project+2+Screenshot+3" class="d-block w-100" alt="Vista Plataforma E-Learning 3"></div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProject2" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProject2" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+                             </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <h6><i class="fas fa-info-circle me-2"></i>Descripción del Proyecto</h6>
+                            <p class="text-muted small">Plataforma educativa online desarrollada para permitir a los instructores crear y gestionar cursos, y a los estudiantes inscribirse, acceder al contenido y seguir su progreso. Incluye gestión de roles de usuario (estudiante, instructor, admin), carga de materiales (videos, documentos), foros de discusión y sistema de calificaciones.</p>
+                            <h6><i class="fas fa-cogs me-2"></i>Tecnologías Empleadas</h6>
+                            <p>
+                                <span class="badge text-bg-primary">ASP.NET Core MVC</span>
+                                <span class="badge text-bg-secondary">Entity Framework Core</span>
+                                <span class="badge" style="background-color: var(--secondary-color); color: white;">C#</span>
+                                <span class="badge text-bg-primary">SQL Server</span>
+                                <span class="badge text-bg-info">Bootstrap 5</span>
+                                <span class="badge text-bg-warning text-dark">jQuery</span>
+                                <span class="badge text-bg-light text-dark border">Azure DevOps</span>
+                            </p>
+                            <h6><i class="fas fa-link me-2"></i>Enlaces Relevantes</h6>
+                            <p>
+                                <a href="#" class="btn btn-sm btn-success me-2 mb-2 shadow-sm disabled" aria-disabled="true"><i class="fas fa-external-link-alt me-1"></i> Demo (Próximamente)</a>
+                                <a href="#" target="_blank" class="btn btn-sm btn-dark mb-2 shadow-sm disabled" aria-disabled="true"><i class="fab fa-github me-1"></i> Código (Privado)</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        const modal3HTML = `
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title" id="projectModal3Label">Landing Page Moderna</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="row g-4 align-items-center">
+                         <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div id="carouselProject3" class="carousel slide shadow-sm border" data-bs-ride="carousel" style="border-radius: 12px; overflow: hidden;">
+                                <div class="carousel-inner modal-carousel">
+                                    <div class="carousel-item active"><img src="https://images.unsplash.com/photo-1607703703520-bb638e84caf2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="d-block w-100" alt="Vista Landing Page 1"></div>
+                                    <div class="carousel-item"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="d-block w-100" alt="Vista Landing Page 2"></div>
+                                    <div class="carousel-item"><img src="https://via.placeholder.com/1170x780/cccccc/969696?text=Project+3+Screenshot+3" class="d-block w-100" alt="Vista Landing Page 3"></div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProject3" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProject3" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
+                             </div>
+                         </div>
+                         <div class="col-lg-5">
+                            <h6><i class="fas fa-info-circle me-2"></i>Descripción del Proyecto</h6>
+                            <p class="text-muted small">Diseño y desarrollo de una landing page moderna y responsiva para un producto SaaS (Software as a Service). Enfocada en la claridad del mensaje, propuesta de valor destacada, llamadas a la acción (CTAs) efectivas y un diseño visualmente atractivo con microinteracciones sutiles para mejorar la experiencia del usuario. Optimizada para velocidad de carga y SEO básico.</p>
+                            <h6><i class="fas fa-cogs me-2"></i>Tecnologías Empleadas</h6>
+                            <p>
+                                <span class="badge text-bg-danger"><i class="fab fa-html5 me-1"></i> HTML5</span>
+                                <span class="badge text-bg-info"><i class="fab fa-css3-alt me-1"></i> CSS3 (Flexbox/Grid)</span>
+                                <span class="badge" style="background-color: #CD6799; color: white;"><i class="fab fa-sass me-1"></i> Sass</span>
+                                <span class="badge text-bg-warning text-dark"><i class="fab fa-js me-1"></i> JavaScript (ES6+)</span>
+                                <span class="badge" style="background-color: var(--accent-color); color: white;"><i class="fab fa-bootstrap me-1"></i> Bootstrap 5 Grid</span>
+                                <span class="badge text-bg-light text-dark border"><i class="fab fa-figma me-1"></i> Figma (Diseño)</span>
+                            </p>
+                            <h6><i class="fas fa-link me-2"></i>Enlaces Relevantes</h6>
+                            <p>
+                                <a href="#" class="btn btn-sm btn-success me-2 mb-2 shadow-sm"><i class="fas fa-external-link-alt me-1"></i> Ver Sitio en Vivo</a>
+                                <a href="#" target="_blank" class="btn btn-sm btn-dark mb-2 shadow-sm"><i class="fab fa-github me-1"></i> Ver Código</a>
+                            </p>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+         </div>`;
+
+        // Inject the HTML into the modal placeholder divs
+        const modal2El = document.getElementById('projectModal2');
+        const modal3El = document.getElementById('projectModal3');
+        if (modal2El) {
+            modal2El.innerHTML = modal2HTML;
+        }
+        if (modal3El) {
+            modal3El.innerHTML = modal3HTML;
+        }
+
+    </script>
+
+</body>
+
+</html>
